@@ -1,6 +1,5 @@
-package pl.coderslab.charity;
+package pl.coderslab;
 
-import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
