@@ -24,20 +24,26 @@ public class SecurityConfig {
                 .antMatchers("/us").permitAll()
                 .antMatchers("/fundations").permitAll()
                 .antMatchers("/contact").permitAll()
-                .antMatchers("/user/main").hasAnyRole()
+                .antMatchers("/user/main").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin/main").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
+                .defaultSuccessUrl("/user/main", true)
                 .and()
-                .csrf();
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+                .and()
+                .csrf().disable();
         return http.build();
     }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-
         return new BCryptPasswordEncoder();
     }
 

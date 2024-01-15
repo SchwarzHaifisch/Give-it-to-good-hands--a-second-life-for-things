@@ -17,20 +17,16 @@ class LoginController {
     @GetMapping
     String login(@RequestParam(value = "error", required = false) String error) {
         if (error != null) {
-            // Błąd logowania
         }
         return "login";
     }
 
-
     @PostMapping
     String loginPost(@RequestParam String email, @RequestParam String password) {
         User user = userService.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            System.out.println("dupa1");
+        if (user != null && userService.matchesPassword(password, user.getPassword())) {
             return "redirect:/user/main";
         } else {
-            System.out.println("dupa2");
             return "login";
         }
     }
