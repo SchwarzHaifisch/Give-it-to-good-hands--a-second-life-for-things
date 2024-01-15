@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <body>
+<%@include file="header.jsp" %>
 <c:if test="${not empty successMessage}">
     <div class="alert alert-success">
             ${successMessage}
     </div>
 </c:if>
-<%@include file="header.jsp" %>
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
