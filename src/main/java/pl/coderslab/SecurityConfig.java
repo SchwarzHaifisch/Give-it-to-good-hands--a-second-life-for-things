@@ -31,11 +31,11 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/user/main", true)
+                .defaultSuccessUrl("/redirect", true)
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/")
                 .permitAll()
                 .and()
                 .csrf().disable();

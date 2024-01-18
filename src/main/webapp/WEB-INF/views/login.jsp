@@ -22,7 +22,7 @@
     <form action="${pageContext.request.contextPath}/login" method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class="form-group">
-            <input type="text" name="email" placeholder="Numer telefonu" />
+            <input type="text" name="email" placeholder="Email" />
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />
