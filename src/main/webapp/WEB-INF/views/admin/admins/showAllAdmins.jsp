@@ -20,6 +20,11 @@
     </style>
 </head>
 <body>
+<c:if test="${not empty successMessage}">
+    <div class="alert alert-success">
+            ${successMessage}
+    </div>
+</c:if>
 <ul class="nav--actions">
     <li><a href="/logout" class="btn btn--small btn--without-border larger-font">Wyloguj się</a></li>
 </ul>
@@ -30,7 +35,7 @@
         fundacjami</a></li>
     <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj
         administratorami</a></li>
-    <li><a href="#" class="btn btn--without-border active larger-font">Dodaj administratora</a></li>
+    <li><a href="/admin/admins/add" class="btn btn--without-border active larger-font">Dodaj administratora</a></li>
 </ul>
 <table class="table border-bottom w-100 larger-font">
     <thead>
@@ -50,10 +55,15 @@
             <td class="col-3">${admin.name}</td>
             <td class="col-3">${admin.lastName}</td>
             <td class="col d-flex align-items-center justify-content-left flex-wrap">
-                <form action="/admin/institution/edit" method="get">
+                <form action="/admin/admins/edit" method="get">
                     <input type="hidden" id="idCon" name="idCon" value="${admin.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
+                <form action="/admin/admins/change" method="get">
+                    <input type="hidden" id="idCha" name="idCha" value="${admin.id}"/>
+                    <button type="submit" class="btn btn-primary rounded-0 text-light m-1 larger-font">Zmień uprawnienia na User</button>
+                </form>
+
                 <button type="button" class="btn btn-danger rounded-0 text-light m-1 larger-font" data-toggle="modal"
                         data-target="#deleteModal${admin.id}">
                     Usuń
