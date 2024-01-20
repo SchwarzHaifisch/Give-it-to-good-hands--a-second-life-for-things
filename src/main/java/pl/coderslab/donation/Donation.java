@@ -7,6 +7,7 @@ import pl.coderslab.category.Category;
 import pl.coderslab.institution.Institution;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -24,6 +25,8 @@ public class Donation {
     private List<Category> categories;
     @ManyToOne
     private Institution institution;
+    @Email
+    private String email;
     private String street;
     private String city;
     private String zipCode;

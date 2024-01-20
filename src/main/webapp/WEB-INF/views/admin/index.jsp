@@ -19,7 +19,7 @@
 
 <ul>
     <li><a href="/admin/main" class="btn btn--without-border active">Start</a></li>
-    <li><a href="/admin/institutions" class="btn btn--without-border active">Zarządzaj fundacjami</a></li>
+    <li><a href="/admin/institution/institutions" class="btn btn--without-border active">Zarządzaj fundacjami</a></li>
 </ul>
 <c:if test="${not empty successMessage}">
     <div class="alert alert-success">

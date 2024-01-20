@@ -1,53 +1,50 @@
-package pl.coderslab;
+package pl.coderslab.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.coderslab.donation.Donation;
 import pl.coderslab.institution.Institution;
 import pl.coderslab.institution.InstitutionRepository;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/admin")
-public class AuthorityAdminController {
+@RequestMapping("/admin/institution")
+public class AuthorityAdminInstitutionController {
     private final InstitutionRepository institutionRepository;
-
-    @GetMapping("/main")
-    String homeActionAdmin(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("successMessage", "Zalogowano");
-        return "admin/index";
-    }
 
     @GetMapping("/institutions")
     String institutionsCRUD(Model model) {
-        model.addAttribute("Institutions", institutionRepository.findAll());
-        return "admin/institutions";
+        model.addAttribute("Institutions", institutionRepository.getInstitutionsToIndex());
+        return "admin/institutions/institutions";
     }
 
     @GetMapping("/edit")
     String editInstitution(@RequestParam("idCon") Long id, Model model) {
         Institution institution = institutionRepository.findById(id).orElseThrow();
         model.addAttribute("institution", institution);
-        return "admin/editInstitution";
+        return "admin/institutions/editInstitution";
     }
 
     @PostMapping("/edit")
     String editInstitutionConfirm(@ModelAttribute Institution institution){
+        institution.setDeleted(false);
         institutionRepository.save(institution);
-        return "redirect:/admin/institutions";
+        return "redirect:/admin/institution/institutions";
     }
     @GetMapping("/add")
     String addInstitution(Model model) {
         model.addAttribute("institution", new Institution());
-        return "admin/addInstitution";
+        return "admin/institutions/addInstitution";
     }
 
     @PostMapping("/delete")
     String deleteInstitution(@RequestParam("idDen") Long id){
-        institutionRepository.deleteById(id);
-        return "redirect:/admin/institutions";
+        Institution institution = institutionRepository.findById(id).orElseThrow();
+        institution.setDeleted(true);
+        institutionRepository.save(institution);
+        return "redirect:/admin/institution/institutions";
     }
+
+
 }

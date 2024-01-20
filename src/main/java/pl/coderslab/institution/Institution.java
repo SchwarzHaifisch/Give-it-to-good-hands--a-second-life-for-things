@@ -17,4 +17,6 @@ public class Institution {
     private String name;
     @Column(length = 500)
     private String description;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean deleted;
 }

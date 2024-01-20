@@ -93,6 +93,13 @@
                 <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
                 <div class="form-section form-section--columns">
                     <div class="form-section--column">
+                        <h4>Adres E-mail</h4>
+                        <div class="form-group form-group--inline">
+                            <label>
+                                Email
+                                <form:input type="text" path="email"/>
+                            </label>
+                        </div>
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label>

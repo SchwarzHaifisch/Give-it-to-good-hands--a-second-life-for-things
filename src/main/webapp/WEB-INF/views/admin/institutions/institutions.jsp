@@ -26,8 +26,8 @@
 
 <ul>
     <li><a href="/admin/main" class="btn btn--without-border active larger-font">Start</a></li>
-    <li><a href="/admin/institutions" class="btn btn--without-border active larger-font">Zarządzaj fundacjami</a></li>
-    <li><a href="/admin/add" class="btn btn--without-border active larger-font">Dodaj fundację</a></li>
+    <li><a href="/admin/institution/institutions" class="btn btn--without-border active larger-font">Zarządzaj fundacjami</a></li>
+    <li><a href="/admin/institution/add" class="btn btn--without-border active larger-font">Dodaj fundację</a></li>
 </ul>
 <table class="table border-bottom w-100 larger-font">
     <thead>
@@ -45,17 +45,13 @@
             <td class="col">${institution.name}</td>
             <td class="col">${institution.description}</td>
             <td class="col d-flex align-items-center justify-content-center flex-wrap">
-                <form action="/admin/edit" method="get">
+                <form action="/admin/institution/edit" method="get">
                     <input type="hidden" id="idCon" name="idCon" value="${institution.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
-
-                <!-- Delete Button with Confirmation Modal -->
                 <button type="button" class="btn btn-danger rounded-0 text-light m-1 larger-font" data-toggle="modal" data-target="#deleteModal${institution.id}">
                     Usuń
                 </button>
-
-                <!-- Delete Confirmation Modal -->
                 <div class="modal fade" id="deleteModal${institution.id}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -69,7 +65,7 @@
                                 Czy na pewno chcesz usunąć ten element?
                             </div>
                             <div class="modal-footer">
-                                <form action="/admin/delete" method="post">
+                                <form action="/admin/institution/delete" method="post">
                                     <input type="hidden" id="idDen" name="idDen" value="${institution.id}"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
                                     <button type="submit" class="btn btn-danger">Usuń</button>
@@ -78,13 +74,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Delete Confirmation Modal -->
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-<!-- Dodaj Bootstrap JS (jeśli jest potrzebne) -->
 <script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
