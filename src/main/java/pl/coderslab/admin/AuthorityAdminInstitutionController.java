@@ -27,11 +27,12 @@ public class AuthorityAdminInstitutionController {
     }
 
     @PostMapping("/edit")
-    String editInstitutionConfirm(@ModelAttribute Institution institution){
+    String editInstitutionConfirm(@ModelAttribute Institution institution) {
         institution.setDeleted(false);
         institutionRepository.save(institution);
         return "redirect:/admin/institution/institutions";
     }
+
     @GetMapping("/add")
     String addInstitution(Model model) {
         model.addAttribute("institution", new Institution());
@@ -39,7 +40,7 @@ public class AuthorityAdminInstitutionController {
     }
 
     @PostMapping("/delete")
-    String deleteInstitution(@RequestParam("idDen") Long id){
+    String deleteInstitution(@RequestParam("idDen") Long id) {
         Institution institution = institutionRepository.findById(id).orElseThrow();
         institution.setDeleted(true);
         institutionRepository.save(institution);

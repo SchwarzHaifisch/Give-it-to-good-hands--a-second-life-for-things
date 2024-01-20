@@ -25,7 +25,8 @@
         <label for="name">Nazwa:</label>
         <form:input path="name" id="name" class="form-control" placeholder="${institution.name}" required="required"/>
         <label for="description">Opis:</label>
-        <form:input path="description" id="description" class="form-control" placeholder="${institution.description}" required="required"/>
+        <form:input path="description" id="description" class="form-control" placeholder="${institution.description}"
+                    required="required"/>
         <button type="submit" class="btn btn-primary">Zapisz</button>
     </form:form>
 </section>

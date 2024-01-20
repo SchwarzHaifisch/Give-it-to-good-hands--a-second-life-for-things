@@ -17,19 +17,21 @@ public class DonationController {
     private final DonationRepository donationRepository;
 
     @GetMapping("/donation")
-    String dontaionFormRedirect(Model model){
-        model.addAttribute("categories",categoryRepository.findAll());
+    String dontaionFormRedirect(Model model) {
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("donation", new Donation());
-        model.addAttribute("institutions",institutionRepository.findAll());
+        model.addAttribute("institutions", institutionRepository.findAll());
         return "donationForm";
     }
+
     @PostMapping("/donation")
-    String donationFormSave(@ModelAttribute Donation donation){
+    String donationFormSave(@ModelAttribute Donation donation) {
         donationRepository.save(donation);
         return "redirect:/confirm";
     }
+
     @GetMapping("/confirm")
-    String formConfirmation(){
+    String formConfirmation() {
         return "donationConfirmation";
     }
 }

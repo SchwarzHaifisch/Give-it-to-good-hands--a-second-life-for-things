@@ -30,33 +30,35 @@
         fundacjami</a></li>
     <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj
         administratorami</a></li>
-    <li><a href="/admin/institution/add" class="btn btn--without-border active larger-font">Dodaj fundację</a></li>
+    <li><a href="#" class="btn btn--without-border active larger-font">Dodaj administratora</a></li>
 </ul>
 <table class="table border-bottom w-100 larger-font">
     <thead>
     <tr class="d-flex">
-        <th class="col">ID</th>
-        <th class="col">Nazwa</th>
-        <th class="col">Opis</th>
+        <th class="col-1">ID</th>
+        <th class="col-3">Email</th>
+        <th class="col-3">Imię</th>
+        <th class="col-3">Nazwisko</th>
         <th class="col">Akcje</th>
     </tr>
     </thead>
     <tbody class="text-color-lighter">
-    <c:forEach var="institution" items="${Institutions}">
+    <c:forEach var="admin" items="${admins}">
         <tr class="d-flex">
-            <td class="col">${institution.id}</td>
-            <td class="col">${institution.name}</td>
-            <td class="col">${institution.description}</td>
+            <td class="col-1">${admin.id}</td>
+            <td class="col-3">${admin.email}</td>
+            <td class="col-3">${admin.name}</td>
+            <td class="col-3">${admin.lastName}</td>
             <td class="col d-flex align-items-center justify-content-left flex-wrap">
                 <form action="/admin/institution/edit" method="get">
-                    <input type="hidden" id="idCon" name="idCon" value="${institution.id}"/>
+                    <input type="hidden" id="idCon" name="idCon" value="${admin.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
                 <button type="button" class="btn btn-danger rounded-0 text-light m-1 larger-font" data-toggle="modal"
-                        data-target="#deleteModal${institution.id}">
+                        data-target="#deleteModal${admin.id}">
                     Usuń
                 </button>
-                <div class="modal fade" id="deleteModal${institution.id}" tabindex="-1" role="dialog"
+                <div class="modal fade" id="deleteModal${admin.id}" tabindex="-1" role="dialog"
                      aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -70,8 +72,8 @@
                                 Czy na pewno chcesz usunąć ten element?
                             </div>
                             <div class="modal-footer">
-                                <form action="/admin/institution/delete" method="post">
-                                    <input type="hidden" id="idDen" name="idDen" value="${institution.id}"/>
+                                <form action="#" method="post">
+                                    <input type="hidden" id="idDen" name="idDen" value="${admin.id}"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij
                                     </button>
                                     <button type="submit" class="btn btn-danger">Usuń</button>

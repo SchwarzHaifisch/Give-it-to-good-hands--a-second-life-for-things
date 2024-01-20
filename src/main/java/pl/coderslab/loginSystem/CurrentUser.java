@@ -1,10 +1,5 @@
 package pl.coderslab.loginSystem;
 
-import org.springframework.security.core.GrantedAuthority;
-import pl.coderslab.loginSystem.User;
-
-import java.util.Collection;
-
 public class CurrentUser extends User {
 //    private final pl.coderslab.loginSystem.User user;
 //    public CurrentUser(String username, String password,

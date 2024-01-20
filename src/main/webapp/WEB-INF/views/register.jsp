@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 <section class="login-page">
     <form:form action="${pageContext.request.contextPath}/register" method="POST" modelAttribute="user">

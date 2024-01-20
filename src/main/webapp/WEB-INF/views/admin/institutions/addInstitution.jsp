@@ -24,7 +24,8 @@
         <label for="name">Nazwa:</label>
         <form:input path="name" id="name" class="form-control" placeholder="Nazwa Instytucji" required="required"/>
         <label for="description">Opis:</label>
-        <form:input path="description" id="description" class="form-control" placeholder="Opis Instytucji" required="required"/>
+        <form:input path="description" id="description" class="form-control" placeholder="Opis Instytucji"
+                    required="required"/>
         <button type="submit" class="btn btn-primary">Dodaj</button>
     </form:form>
 </section>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/css/style.css"/>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 <section class="form--steps">
     <div class="form--steps-instructions">
@@ -74,7 +74,8 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" value="${institution.id}" data-name="${institution.name}"/>
+                            <form:radiobutton path="institution" value="${institution.id}"
+                                              data-name="${institution.name}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">${institution.name}</div>
@@ -193,7 +194,7 @@
     </div>
 </section>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 <script src="/resources/js/app.js"></script>
 </body>
 </html>

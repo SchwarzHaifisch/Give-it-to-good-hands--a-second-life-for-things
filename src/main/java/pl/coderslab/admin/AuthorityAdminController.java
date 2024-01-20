@@ -2,8 +2,8 @@ package pl.coderslab.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -11,8 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AuthorityAdminController {
 
     @GetMapping("/main")
-    String homeActionAdmin(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("successMessage", "Zalogowano");
+    String homeActionAdmin() {
         return "admin/index";
     }
 

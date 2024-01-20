@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface InstitutionRepository extends JpaRepository<Institution,Long> {
+public interface InstitutionRepository extends JpaRepository<Institution, Long> {
     @Query("SELECT i FROM Institution i WHERE i.deleted = false ORDER BY i.id DESC")
     List<Institution> getInstitutions(Pageable pageable);
 

@@ -89,28 +89,28 @@
 
         <ul class="help--slides-items">
             <li>
-            <c:forEach var="institution" items="${Institutions}" varStatus="loopStatus">
-                <c:if test="${loopStatus.index % 2 == 0}">
+                <c:forEach var="institution" items="${Institutions}" varStatus="loopStatus">
+                    <c:if test="${loopStatus.index % 2 == 0}">
 
                         <div class="col">
                             <div class="title">${institution.name}</div>
                             <div class="subtitle">Cel i misja: ${institution.description}</div>
                         </div>
 
-                </c:if>
-            </c:forEach>
+                    </c:if>
+                </c:forEach>
             </li>
             <li>
-            <c:forEach var="institution" items="${Institutions}" varStatus="loopStatus">
-                <c:if test="${loopStatus.index % 2 != 0}">
+                <c:forEach var="institution" items="${Institutions}" varStatus="loopStatus">
+                    <c:if test="${loopStatus.index % 2 != 0}">
 
                         <div class="col">
                             <div class="title">${institution.name}</div>
                             <div class="subtitle">Cel i misja: ${institution.description}</div>
                         </div>
 
-                </c:if>
-            </c:forEach>
+                    </c:if>
+                </c:forEach>
             </li>
         </ul>
     </div>

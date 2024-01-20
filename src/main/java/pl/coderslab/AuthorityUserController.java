@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/user")
 public class AuthorityUserController {
     @GetMapping("/main")
-    public String homeActionUser(RedirectAttributes redirectAttributes){
+    public String homeActionUser(RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("successMessage", "Zalogowano");
         return "user/index";
     }
