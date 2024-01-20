@@ -59,11 +59,6 @@
                     <input type="hidden" id="idCon" name="idCon" value="${admin.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
-                <form action="/admin/admins/change" method="get">
-                    <input type="hidden" id="idCha" name="idCha" value="${admin.id}"/>
-                    <button type="submit" class="btn btn-primary rounded-0 text-light m-1 larger-font">Zmień uprawnienia na User</button>
-                </form>
-
                 <button type="button" class="btn btn-danger rounded-0 text-light m-1 larger-font" data-toggle="modal"
                         data-target="#deleteModal${admin.id}">
                     Usuń
@@ -82,7 +77,7 @@
                                 Czy na pewno chcesz usunąć ten element?
                             </div>
                             <div class="modal-footer">
-                                <form action="#" method="post">
+                                <form action="/admin/admins/delete" method="post">
                                     <input type="hidden" id="idDen" name="idDen" value="${admin.id}"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij
                                     </button>
