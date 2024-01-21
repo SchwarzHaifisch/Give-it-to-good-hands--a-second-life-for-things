@@ -54,7 +54,7 @@
             <td class="col-3">${user.name}</td>
             <td class="col-3">${user.lastName}</td>
             <td class="col d-flex align-items-center justify-content-left flex-wrap">
-                <form action="#" method="get">
+                <form action="/admin/users/edit" method="get">
                     <input type="hidden" id="idCon" name="idCon" value="${user.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
