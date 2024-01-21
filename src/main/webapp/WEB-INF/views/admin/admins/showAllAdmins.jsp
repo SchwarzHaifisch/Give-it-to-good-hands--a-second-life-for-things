@@ -20,6 +20,11 @@
     </style>
 </head>
 <body>
+<c:if test="${pageContext.request.userPrincipal ne null}">
+    <div>
+        Witaj, ${pageContext.request.userPrincipal.name}!
+    </div>
+</c:if>
 <c:if test="${not empty successMessage}">
     <div class="alert alert-success">
             ${successMessage}
@@ -33,8 +38,8 @@
     <li><a href="/admin/main" class="btn btn--without-border active larger-font">Start</a></li>
     <li><a href="/admin/institution/institutions" class="btn btn--without-border active larger-font">Zarządzaj
         fundacjami</a></li>
-    <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj
-        administratorami</a></li>
+    <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj administratorami</a></li>
+    <li><a href="/admin/users" class="btn btn--without-border active larger-font">Zarządzaj użytkownikami</a></li>
     <li><a href="/admin/admins/add" class="btn btn--without-border active larger-font">Dodaj administratora</a></li>
 </ul>
 <table class="table border-bottom w-100 larger-font">

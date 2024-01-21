@@ -3,8 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="false" %>
-<!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -33,36 +32,67 @@
     <li><a href="/admin/main" class="btn btn--without-border active larger-font">Start</a></li>
     <li><a href="/admin/institution/institutions" class="btn btn--without-border active larger-font">Zarządzaj
         fundacjami</a></li>
-    <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj
-        administratorami</a></li>
+    <li><a href="/admin/admins" class="btn btn--without-border active larger-font">Zarządzaj administratorami</a></li>
     <li><a href="/admin/users" class="btn btn--without-border active larger-font">Zarządzaj użytkownikami</a></li>
-    <li><a href="/admin/institution/add" class="btn btn--without-border active larger-font">Dodaj fundację</a></li>
+    <li><a href="#" class="btn btn--without-border active larger-font">Dodaj użytkownika</a></li>
 </ul>
 <table class="table border-bottom w-100 larger-font">
     <thead>
     <tr class="d-flex">
-        <th class="col">ID</th>
-        <th class="col">Nazwa</th>
-        <th class="col">Opis</th>
+        <th class="col-1">ID</th>
+        <th class="col-3">Email</th>
+        <th class="col-3">Imię</th>
+        <th class="col-3">Nazwisko</th>
         <th class="col">Akcje</th>
     </tr>
     </thead>
     <tbody class="text-color-lighter">
-    <c:forEach var="institution" items="${Institutions}">
+    <c:forEach var="user" items="${users}">
         <tr class="d-flex">
-            <td class="col">${institution.id}</td>
-            <td class="col">${institution.name}</td>
-            <td class="col">${institution.description}</td>
+            <td class="col-1">${user.id}</td>
+            <td class="col-3">${user.email}</td>
+            <td class="col-3">${user.name}</td>
+            <td class="col-3">${user.lastName}</td>
             <td class="col d-flex align-items-center justify-content-left flex-wrap">
-                <form action="/admin/institution/edit" method="get">
-                    <input type="hidden" id="idCon" name="idCon" value="${institution.id}"/>
+                <form action="#" method="get">
+                    <input type="hidden" id="idCon" name="idCon" value="${user.id}"/>
                     <button type="submit" class="btn btn-success rounded-0 text-light m-1 larger-font">Edytuj</button>
                 </form>
+
+                <button type="button" class="btn btn-primary rounded-0 text-light m-1 larger-font" data-toggle="modal"
+                        data-target="#banModal${user.id}">
+                    Ban
+                </button>
+                <div class="modal fade" id="banModal${user.id}" tabindex="-1" role="dialog"
+                     aria-labelledby="banModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="banModalLabel">Potwierdzenie Zbanowania</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Czy na pewno chcesz zbanować tego użytkownika?
+                            </div>
+                            <div class="modal-footer">
+                                <form action="#" method="post">
+                                    <input type="hidden" id="idBan" name="idBan" value="${user.id}"/>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij
+                                    </button>
+                                    <button type="submit" class="btn btn-danger">Zbanuj</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="button" class="btn btn-danger rounded-0 text-light m-1 larger-font" data-toggle="modal"
-                        data-target="#deleteModal${institution.id}">
+                        data-target="#deleteModal${user.id}">
                     Usuń
                 </button>
-                <div class="modal fade" id="deleteModal${institution.id}" tabindex="-1" role="dialog"
+                <div class="modal fade" id="deleteModal${user.id}" tabindex="-1" role="dialog"
                      aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -76,8 +106,8 @@
                                 Czy na pewno chcesz usunąć ten element?
                             </div>
                             <div class="modal-footer">
-                                <form action="/admin/institution/delete" method="post">
-                                    <input type="hidden" id="idDen" name="idDen" value="${institution.id}"/>
+                                <form action="#" method="post">
+                                    <input type="hidden" id="idDen" name="idDen" value="${user.id}"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij
                                     </button>
                                     <button type="submit" class="btn btn-danger">Usuń</button>

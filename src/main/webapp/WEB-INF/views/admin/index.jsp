@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
 </head>
 <body>
+<c:if test="${pageContext.request.userPrincipal ne null}">
+    <div>
+        Witaj, ${pageContext.request.userPrincipal.name}!
+    </div>
+</c:if>
 <ul class="nav--actions">
     <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj się</a></li>
 </ul>
@@ -22,6 +27,7 @@
     <li><a href="/admin/institution/institutions" class="btn btn--without-border active">Zarządzaj fundacjami</a></li>
     <li><a href="/admin/admins" class="btn btn--without-border active">Zarządzaj
         administratorami</a></li>
+    <li><a href="/admin/users" class="btn btn--without-border active larger-font">Zarządzaj użytkownikami</a></li>
 </ul>
 <c:if test="${not empty successMessage}">
     <div class="alert alert-success">
