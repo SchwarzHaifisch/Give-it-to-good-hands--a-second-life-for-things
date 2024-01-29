@@ -40,11 +40,26 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + userId));
     }
 
-    public void updateUser(User user) {
-        userRepository.save(user);
-    }
-
     public boolean matchesPassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
+
+    public void editAccount(User editedUser) {
+        User existingUser = findUserById(editedUser.getId());
+
+        if (!editedUser.getPassword().equals(editedUser.getPasswordRep())) {
+            throw new IllegalArgumentException("Hasła nie są takie same");
+        } else if (editedUser.getName().isEmpty() || editedUser.getName().isBlank()) {
+            throw new IllegalArgumentException("Niepoprawne imię");
+        } else if (editedUser.getLastName().isEmpty() || editedUser.getLastName().isBlank()) {
+            throw new IllegalArgumentException("Niepoprawne nazwisko");
+        } else if (editedUser.getPassword().isEmpty() || editedUser.getPassword().isBlank() || editedUser.getPassword().length() < 10) {
+            throw new IllegalArgumentException("Hasło jest za krótkie");
+        }
+
+        existingUser.setName(editedUser.getName());
+        existingUser.setLastName(editedUser.getLastName());
+        existingUser.setPassword(passwordEncoder.encode(editedUser.getPassword()));
+        userRepository.save(existingUser);
     }
 }
